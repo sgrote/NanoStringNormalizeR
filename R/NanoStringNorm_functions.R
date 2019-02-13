@@ -3,7 +3,7 @@
 # go through directory and subdirectories and merge all NanoString counts
 collect_rccs = function(input_folder){
 	message("\nCollecting .RCC files in ", input_folder ," ...")
-	# get subdirectories	
+	# get subdirectories    
 	subdirs = list.dirs(path=input_folder, full.names=TRUE, recursive=FALSE)
 	# add top-level directory to not require the data to be in subfolders
 	subdirs = c(subdirs, input_folder)
@@ -16,7 +16,7 @@ collect_rccs = function(input_folder){
 			next
 		}
 		# read RCC
-		rccs = 	read.markup.RCC(s)
+		rccs =  read.markup.RCC(s)
 		# extract mRNA
 		mrna = rccs$x
 		# merge mRNA from different subdirectories
@@ -110,9 +110,9 @@ nano_norm = function(mrna, house_genes){
 
 # function for geometric mean
 geo_mean = function(data){
-    log_data = log(data)
-    gm = exp(mean(log_data[is.finite(log_data)]))
-    return(gm)
+	log_data = log(data)
+	gm = exp(mean(log_data[is.finite(log_data)]))
+	return(gm)
 }
 
 
@@ -124,7 +124,7 @@ get_fc = function(normalized_mrna){
 	if (length(ref_indices) == 0){
 		stop("No reference samples found. Note that reference samples are assumed
 			to carry 'mvp' or 'MVP' in their sample name.")
-	}	
+	}   
 	ref_samples = colnames(normalized_mrna)[ref_indices]
 	
 	message("\nGet ratio and fold-change using reference-samples:\n",
