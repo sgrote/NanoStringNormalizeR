@@ -10,19 +10,19 @@ Normalize all NanoString *.RCC* files in a directory using [NanoStringNorm](http
 ```
 if (!requireNamespace("devtools", quietly=TRUE))
     install.packages("devtools")
-devtools::install_github("sgrote/ancientpca")
+devtools::install_github("sgrote/NanoStringNormalizeR")
 ```
 
 
 ## Example workflow
 
-1. Load this package
+##### 1. Load this package
 
 ```
-library(NanoStringNormalizer)
+library(NanoStringNormalizeR)
 ```
 
-2. Set a path to the directory that contains the *.RCC* files  
+##### 2. Set a path to the directory that contains the *.RCC* files  
 
 For example something like this on UNIX:
 
@@ -36,7 +36,7 @@ or something like this on Windows:
 input_folder = "C:\Users\user\NanoString\Raw_Data"
 ```
 
-3. Define housekeeping genes
+##### 3. Define housekeeping genes
 
 For example:
 
@@ -44,7 +44,7 @@ For example:
 house_genes = c("ACTB", "GUSB", "MRPL19", "PSMC4", "PUM1", "RPLP0", "SF3A1", "TFRC")
 ```
 
-3. Normalize all *.RCC* files
+##### 4. Normalize all *.RCC* files
 
 This puts all the *.RCC* files in `input_folder` together and normalizes them at once
 
@@ -53,6 +53,7 @@ norm_fc(input_folder, house_genes)
 ```
 
 _Note that also _.RCC_ in subdirectories of `input_folder` are taken into account_
+
 
 ## Output
 
