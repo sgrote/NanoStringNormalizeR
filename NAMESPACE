@@ -1,2 +1,4 @@
 export("norm_fc")
 import("NanoStringNorm")
+importFrom("stats", "sd")
+importFrom("utils", "write.csv", "write.table")
