@@ -16,15 +16,15 @@ devtools::install_github("sgrote/NanoStringNormalizeR")
 
 ## Example workflow
 
-##### 1. Load this package
+#### 1. Load this package
 
 ```
 library(NanoStringNormalizeR)
 ```
 
-##### 2. Set a path to the directory that contains the *.RCC* files  
+#### 2. Set a path to the directory that contains the *.RCC* files
 
-For example something like this on UNIX:
+For example something like this on Unix:
 
 ```
 input_folder = "/home/user/NanoString/Raw_Data"
@@ -36,7 +36,7 @@ or something like this on Windows:
 input_folder = "C:\Users\user\NanoString\Raw_Data"
 ```
 
-##### 3. Define housekeeping genes
+#### 3. Define housekeeping genes
 
 For example:
 
@@ -44,7 +44,7 @@ For example:
 house_genes = c("ACTB", "GUSB", "MRPL19", "PSMC4", "PUM1", "RPLP0", "SF3A1", "TFRC")
 ```
 
-##### 4. Normalize all *.RCC* files
+#### 4. Normalize all *.RCC* files
 
 This puts all the *.RCC* files in `input_folder` together and normalizes them at once
 
@@ -55,7 +55,22 @@ norm_fc(input_folder, house_genes)
 _Note that also _.RCC_ in subdirectories of `input_folder` are taken into account_
 
 
-This created a folder `results` in the `input_folder` containing the following files:
+This created a folder `results` in the `input_folder`, e.g.
+
+
+```
+/home/user/NanoString/Raw_Data/results/
+```
+
+for the Unix example, or
+
+```
+C:\Users\user\NanoString\Raw_Data\results\
+```
+
+for the Windows example,
+
+containing the following files:
 
 file | description |
 ----- | ----- |
@@ -70,22 +85,23 @@ file | description |
 _Note that existing files will be overwritten_
 
 
-##### 5. Plot ratios of normalized data
+#### 5. Plot ratios of normalized data
 
 To create a png file with a heatmap of ratios, set a path to a .csv file with ratios.
-This can be the `ratio.csv` created above.
+This can be the `ratio.csv` created above, e.g.
 
-For example something like this on UNIX:
 
 ```
 ratio_csv = "/home/user/NanoString/Raw_Data/results/ratio.csv"
 ```
 
-or something like this on Windows:
+for the Unix example, or
 
 ```
 ratio_csv = "C:\Users\user\NanoString\Raw_Data\results\ratio.csv"
 ```
+
+for the Windows example.
 
 Then plot a heatmap:
 
