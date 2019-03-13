@@ -24,16 +24,10 @@ library(NanoStringNormalizeR)
 
 #### 2. Set a path to the directory that contains the *.RCC* files
 
-For example something like this on Unix:
+For example: 
 
 ```
-input_folder = "/home/user/NanoString/Raw_Data"
-```
-
-or something like this on Windows:
-
-```
-input_folder = "C:\Users\user\NanoString\Raw_Data"
+input_folder = "C:/Users/user/NanoString/Raw_Data"
 ```
 
 #### 3. Define housekeeping genes
@@ -57,18 +51,9 @@ _Note that also _.RCC_ in subdirectories of `input_folder` are taken into accoun
 
 This created a folder `results` in the `input_folder`, e.g.
 
-
 ```
-/home/user/NanoString/Raw_Data/results/
+C:/Users/user/NanoString/Raw_Data/results/
 ```
-
-for the Unix example, or
-
-```
-C:\Users\user\NanoString\Raw_Data\results\
-```
-
-for the Windows example,
 
 containing the following files:
 
@@ -90,18 +75,9 @@ _Note that existing files will be overwritten_
 To create a png file with a heatmap of ratios, set a path to a .csv file with ratios.
 This can be the `ratio.csv` created above, e.g.
 
-
 ```
-ratio_csv = "/home/user/NanoString/Raw_Data/results/ratio.csv"
+ratio_csv = "C:/Users/user/NanoString/Raw_Data/results/ratio.csv"
 ```
-
-for the Unix example, or
-
-```
-ratio_csv = "C:\Users\user\NanoString\Raw_Data\results\ratio.csv"
-```
-
-for the Windows example.
 
 Then plot a heatmap:
 
