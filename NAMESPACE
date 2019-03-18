@@ -1,4 +1,4 @@
-export("norm_fc", "plot_ratios")
+export("norm_fc", "plot_ratios", "subset_ratios")
 import("NanoStringNorm")
 importFrom("stats", "sd")
 importFrom("utils", "write.csv", "write.table", "read.csv")

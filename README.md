@@ -40,7 +40,7 @@ house_genes = c("ACTB", "GUSB", "MRPL19", "PSMC4", "PUM1", "RPLP0", "SF3A1", "TF
 
 #### 4. Normalize all *.RCC* files
 
-This puts all the *.RCC* files in `input_folder` together and normalizes them at once
+This puts all the *.RCC* files in `input_folder` together and normalizes them at once:
 
 ```
 norm_fc(input_folder, house_genes)
@@ -72,22 +72,49 @@ _Note that existing files will be overwritten_
 
 #### 5. Plot ratios of normalized data
 
-To create a png file with a heatmap of ratios, set a path to a .csv file with ratios.
+To create a png file with a heatmap of ratios, set a path to a _.csv_ file with ratios.
 This can be the `ratio.csv` created above, e.g.
 
 ```
 ratio_csv = "C:/Users/user/NanoString/Raw_Data/results/ratio.csv"
 ```
 
-Then plot a heatmap:
+While this could be plotted right away, `ratio.csv` will often contain too many data for a good looking plot.  
+In those cases it is useful to filter it `ratio.csv` first, e.g. with a list of genes.  
+To filter for genes, set a path to a _.csv_ file with the genes you want to keep in the _first column_, e.g.
 
 ```
-plot_ratios(ratio_csv)
+genes_csv = "C:/Users/user/NanoString/pam50_genes.csv"
 ```
 
-This will create a file `ratio_heatmap.png` in the same folder as `ratio.csv`
+Then filter `ratio_csv` with it:
 
-_Note that `ratio.csv` might contain too many data for a good looking plot._
-_In that case you can save a subset of `ratio.csv`, e.g. in Excel, under a different name, e.g. `ratio_subset.csv` and provide that as input to `plot_ratios`_
+```
+subset_ratios(ratio_csv, genes_csv, "ratio_pam50_subset.csv")
+```
+
+This will create a file `ratio_pam50_subset.csv` in the same folder as `ratio_csv`.   
+
+To plot this subset as a heatmap run
+
+```
+ratio_subset = "C:/Users/user/NanoString/Raw_Data/results/ratio_pam50_subset.csv"
+plot_ratios(ratio_subset)
+```
+
+This will create a file `ratio_heatmap.png` in the same folder as `ratio_pam50_subset.csv`.  
+
+To see more options for the heatmaps run
+
+```
+?plot_ratios
+```
+
+
+_Of course the subset of `ratio.csv` could also have been filtered with any other tool, e.g. in Excel._  
+_Also, the subsetting and plotting would work in the same way with `fold_change.csv` as input._ 
+
+
+
 
 
