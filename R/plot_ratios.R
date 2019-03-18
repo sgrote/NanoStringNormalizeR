@@ -10,7 +10,7 @@
 
 plot_ratios = function(ratio_csv, title="normalized ratios", size_title=1, size_legend=0.8, size_row_names=0.7, size_col_names=0.8, mar_below=18, mar_right=6, png_width=20, png_height=24, dendrogram="both", Rowv=TRUE, Colv=TRUE){
     
-    ratio = read.csv(ratio_csv)
+    ratio = read.csv(ratio_csv, check.names=F, header=T, as.is=T)
     
     # first column -> row-names
     row.names(ratio) = ratio[,1]
