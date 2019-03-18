@@ -46,7 +46,7 @@ This puts all the *.RCC* files in `input_folder` together and normalizes them at
 norm_fc(input_folder, house_genes)
 ```
 
-_Note that also _.RCC_ in subdirectories of `input_folder` are taken into account_
+_Note that also _.RCC_ in subdirectories of `input_folder` are taken into account._
 
 
 This created a folder `results` in the `input_folder`, e.g.
@@ -67,12 +67,12 @@ file | description |
 `fold_change_mvp_reference.csv`	| fold-changes for reference samples (mvp-samples) |
 
 
-_Note that existing files will be overwritten_
+_Note that existing files will be overwritten._
 
 
 #### 5. Plot ratios of normalized data
 
-To create a png file with a heatmap of ratios, set a path to a _.csv_ file with ratios.
+To create a _.png_ file with a heatmap of ratios, set a path to a _.csv_ file with ratios.
 This can be the `ratio.csv` created above, e.g.
 
 ```
