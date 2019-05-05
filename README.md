@@ -59,6 +59,7 @@ containing the following files:
 
 file | description |
 ----- | ----- |
+`raw_data.csv` | unnormalized NanoString data |
 `normalized_data.csv` | normalized NanoString data |
 `flagged_samples.txt` | flagged samples (unusual normalization factors) |
 `ratio.csv` | ratios for target samples |

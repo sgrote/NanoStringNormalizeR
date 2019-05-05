@@ -1,8 +1,8 @@
 Package: NanoStringNormalizeR
 Type: Package
 Title: Normalize all NanoString .RCC files in a directory
-Version: 0.99.3
-Date: 2019-02-13
+Version: 0.99.4
+Date: 2019-05-05
 Author: Steffi Grote
 Maintainer: Steffi Grote <grote.steffi@gmail.com>
 Description: Wrapper for NanoStringNorm to be applied to all .RCC files in the input directory.

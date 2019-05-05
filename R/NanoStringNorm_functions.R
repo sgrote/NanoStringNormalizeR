@@ -36,8 +36,21 @@ collect_rccs = function(input_folder){
 	if (nrow(mrna) != nrow(merged_mrna)){
 		stop("Merging of subfolders failed. Check that Class, Name and Accession for genes are consistent.")
 	}
+	colnames(merged_mrna) = remove_leading_X(colnames(merged_mrna))
+	# just for consistency
+	colnames(merged_mrna)[1] = "Code.Class"
 	
 	return(merged_mrna)
+}
+
+# define housekeeping genes explicitly
+set_house_genes = function(mrna, house_genes){
+	# specify housekeeping genes explicitly
+	mrna[mrna[,1]=="Housekeeping", 1] = "Endogenous"
+	mrna[mrna[,2] %in% house_genes, 1] = "Housekeeping"
+	# sort by class and gene name
+	mrna = mrna[order(mrna[,1], mrna[,2]),]
+	return(mrna)
 }
 
 # remove leading X from char-vector (useful for sample names where X was added automatically)
@@ -50,14 +63,8 @@ remove_leading_X = function(text){
 # get normalized data and flagged samples
 # Positive control normalization -> mean+2sd-background mask (threshold) -> Housekeeping normalization
 # this follows the order of normalization steps in NanoStringNorm
-nano_norm = function(mrna, house_genes){
+nano_norm = function(mrna){
 	message("\nNormalize data...")
-	
-	# specify housekeeping genes explicitly
-	mrna[mrna[,1]=="Housekeeping", 1] = "Endogenous"
-	mrna[mrna[,2] %in% house_genes, 1] = "Housekeeping"
-	# sort by class and gene name
-	mrna = mrna[order(mrna[,1], mrna[,2]),]
 	
 	## A) positive control normalization
 	# CodeCount adjusts each sample based on its relative value to all samples

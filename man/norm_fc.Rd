@@ -21,13 +21,13 @@ norm_fc(input_folder, house_genes)
 	TODO: explain steps how NanoStringNorm is applied in detail
 }
 \value{
-	invisible NULL
-	Side effects: Creates folder 'results' in \code{input_folder}, containing:
-	* a table with normalized NanoString data
-	* a table with flagged samples (unusual normalization factors)
- 	* a table with ratios for target samples
- 	* a table with ratios for reference samples (mvp-samples)
- 	* a table with fold-changes
+	invisible NULL\cr
+	Side effects: Creates folder 'results' in \code{input_folder}, containing:\cr
+	* a table with normalized NanoString data\cr
+	* a table with flagged samples (unusual normalization factors)\cr
+ 	* a table with ratios for target samples\cr
+ 	* a table with ratios for reference samples (mvp-samples)\cr
+ 	* a table with fold-changes\cr
  	* a table with fold-changes for reference samples (mvp-samples)
 }
 \references{
