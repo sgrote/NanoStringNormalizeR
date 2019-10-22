@@ -46,7 +46,7 @@ This puts all the *.RCC* files in `input_folder` together and normalizes them at
 norm_fc(input_folder, house_genes)
 ```
 
-_Note that also _.RCC_ in subdirectories of `input_folder` are taken into account._
+_Note that also _.RCC_ files in subdirectories of `input_folder` are taken into account._
 
 
 This created a folder `results` in the `input_folder`, e.g.
