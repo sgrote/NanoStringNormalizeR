@@ -55,9 +55,7 @@ set_house_genes = function(mrna, house_genes){
 
 # remove leading X from char-vector (useful for sample names where X was added automatically)
 remove_leading_X = function(text){
-	xstart = substring(text,1,1) == "X"
-	text[xstart] = substring(text[xstart], 2)
-	return(text)
+	return(gsub("^X", "", text))
 }
 
 # get normalized data and flagged samples
