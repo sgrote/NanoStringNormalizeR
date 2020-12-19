@@ -18,7 +18,14 @@ norm_fc(input_folder, house_genes)
 }
 }
 \details{
-	TODO: explain steps how NanoStringNorm is applied in detail
+	Normalization steps:\cr
+	1. collect and merge all .RCC files
+	2. positive control normalization using \code{NanoStringNorm(..., CodeCount = "geo.mean")}
+	3. flag samples with Positive Control normalization factor > 3 or < 0.3
+	4. compute background threshold (mean + 2 * sd of negative controls)
+	5. houskeeping gene normalization using \code{NanoStringNorm(..., SampleContent = "housekeeping.geo.mean")}
+	6. flag samples with sampleContent normalization factor > 10 or < 0.1
+	7. mask samples
 }
 \value{
 	invisible NULL\cr
@@ -28,10 +35,14 @@ norm_fc(input_folder, house_genes)
  	* a table with ratios for target samples\cr
  	* a table with ratios for reference samples (mvp-samples)\cr
  	* a table with fold-changes\cr
- 	* a table with fold-changes for reference samples (mvp-samples)
+ 	* a table with fold-changes for reference samples (mvp-samples)\cr
+ 	* a table with ratios compared to all non-mvp-samples\cr
+ 	* a table with fold-changes compared all non-mvp-samples\cr
 }
 \references{
-	TODO: NanoString Guidelines with version
+	NanoString Gene Expression Data Analysis Guidelines (MAN-C0011-04) \cr
+	https://cran.r-project.org/web/packages/NanoStringNorm/vignettes/NanoStringNorm_Introduction.pdf \cr
+
 }
 \author{
 	Steffi Grote

@@ -66,6 +66,8 @@ file | description |
 `ratio_mvp_reference.csv` | ratios for reference samples (mvp-samples) |
 `fold_change.csv` | fold-changes for target samples |
 `fold_change_mvp_reference.csv`	| fold-changes for reference samples (mvp-samples) |
+`ratio_without_mvp_reference.csv` | ratio for target samples compared to all target samples |
+`fold_change_without_mvp_reference.csv`	| fold-changes for target samples compared to all target samples |
 
 
 _Note that existing files will be overwritten._

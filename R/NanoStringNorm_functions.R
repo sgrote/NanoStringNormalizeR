@@ -148,7 +148,7 @@ get_fc = function(normalized_mrna){
 	ratio = data.frame(Gene=row.names(ratio), ratio)
 	fc = data.frame(Gene=row.names(fc), fc)
 	
-	# remove autoatically added leading X from sample names
+	# remove automatically added leading X from sample names
 	colnames(ratio) = remove_leading_X(colnames(ratio))
 	colnames(fc) = remove_leading_X(colnames(fc))
 	
@@ -159,7 +159,30 @@ get_fc = function(normalized_mrna){
 	fc_ref = fc[,c(1,ref_indices)]
 	fc = fc[,-ref_indices]
 	
-	return(list(ratio, fc, ratio_ref, fc_ref))
+	message("\nNEW: also compute ratio and fold-change using all-non-reference-samples...\n")
+	
+	# NEW request: add ratio against mean of non-mvp samples
+	# (for some genes all mvp samples are masked, because of low abundance, NA ratio)
+	non_ref_norm_mrna = normalized_mrna[, 4:ncol(normalized_mrna)]
+	non_ref_norm_mrna = non_ref_norm_mrna[, !(grepl("mvp", colnames(non_ref_norm_mrna)))]
+	
+	non_ref_mean = apply(non_ref_norm_mrna, 1, geo_mean)
+	non_ref_ratio = (non_ref_norm_mrna / non_ref_mean)
+	# fold-change is defined as (see Guidelines page 19)
+	# If ratio > 1, then: Fold change = Ratio
+	# If ratio < 1, then: Fold change = −1 ∗ 1/Ratio
+	non_ref_fc = non_ref_ratio
+	non_ref_fc[non_ref_fc < 1 & !is.na(non_ref_fc)] = -1 / non_ref_fc[non_ref_fc < 1 & !is.na(non_ref_fc)]
+	
+	# add sample-column to avoid row-names in output
+	non_ref_ratio = data.frame(Gene=row.names(non_ref_ratio), non_ref_ratio)
+	non_ref_fc = data.frame(Gene=row.names(non_ref_fc), non_ref_fc)
+	
+	# remove automatically added leading X from sample names
+	colnames(non_ref_ratio) = remove_leading_X(colnames(non_ref_ratio))
+	colnames(non_ref_fc) = remove_leading_X(colnames(non_ref_fc))
+	
+	return(list(ratio, fc, ratio_ref, fc_ref, non_ref_ratio, non_ref_fc))
 }
 
 

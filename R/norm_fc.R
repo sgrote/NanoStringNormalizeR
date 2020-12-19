@@ -15,6 +15,8 @@ norm_fc = function(input_folder, house_genes){
 	fold_change = ratio_and_fc[[2]]
 	ratio_ref = ratio_and_fc[[3]]
 	fold_change_ref = ratio_and_fc[[4]]
+	ratio_wo_ref = ratio_and_fc[[5]]
+	fold_change_wo_ref = ratio_and_fc[[6]]
 	
 	# write output
 	output_folder = paste0(input_folder, "/results")
@@ -27,6 +29,8 @@ norm_fc = function(input_folder, house_genes){
 	write.csv(fold_change, paste0(output_folder, "/fold_change.csv"), quote=F, row.names=F)
 	write.csv(ratio_ref, paste0(output_folder, "/ratio_mvp_reference.csv"), quote=F, row.names=F)
 	write.csv(fold_change_ref, paste0(output_folder, "/fold_change_mvp_reference.csv"), quote=F, row.names=F)
+	write.csv(ratio_wo_ref, paste0(output_folder, "/ratio_without_mvp_reference.csv"), quote=F, row.names=F)
+	write.csv(fold_change_wo_ref, paste0(output_folder, "/fold_change_without_mvp_reference.csv"), quote=F, row.names=F)
 	write.table(flagged_samples, paste0(output_folder, "/flagged_samples.txt"), quote=F, row.names=F, col.names=F)
 	message("\nDone.\n")
 	
