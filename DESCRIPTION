@@ -14,3 +14,4 @@ Imports:
 	stats,
 	graphics,
 	grDevices
+biocViews:
